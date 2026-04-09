@@ -517,7 +517,8 @@ a {
 }
 
 .table-custom thead th {
-    color: white;
+    background-color: transparent !important;
+    color: white !important;
     font-weight: 600;
     font-size: 0.9rem;
     padding: 1rem 1.2rem;
