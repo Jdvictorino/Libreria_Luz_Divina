@@ -32,6 +32,21 @@ $tipos = [
 ];
 ?>
 
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+        <h1 class="hero-title animate-fade-in">
+            <i class="bi bi-book-half"></i>
+            Librería <span class="text-accent">Luz Divina</span>
+        </h1>
+        <p class="hero-subtitle animate-fade-in-delay">Descubre nuestra colección de libros seleccionados especialmente para ti</p>
+        <a href="#libros" class="btn btn-hero animate-fade-in-delay-2">
+            <i class="bi bi-arrow-down-circle me-2"></i> Explorar Libros
+        </a>
+    </div>
+</section>
+
 <!-- Listado de Libros -->
 <section id="libros" class="section-content">
     <div class="container">
@@ -67,10 +82,20 @@ $tipos = [
                                     <span class="book-price no-price">Sin precio</span>
                                 <?php endif; ?>
                             </div>
+                            <div class="book-cover-wrapper">
+                                <?php
+                                    $imgPath = 'images/books/' . strtoupper($libro['id_titulo']) . '.png';
+                                    if (file_exists($imgPath)):
+                                ?>
+                                    <img src="<?php echo $imgPath; ?>" alt="<?php echo htmlspecialchars($libro['titulo']); ?>" class="book-cover-img" loading="lazy">
+                                <?php else: ?>
+                                    <div class="book-cover-placeholder">
+                                        <i class="bi bi-book"></i>
+                                        <span>Sin portada</span>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
                             <div class="book-card-body">
-                                <div class="book-icon">
-                                    <i class="bi bi-book"></i>
-                                </div>
                                 <h5 class="book-title"><?php echo htmlspecialchars($libro['titulo']); ?></h5>
                                 <p class="book-author">
                                     <i class="bi bi-person-fill"></i>

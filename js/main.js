@@ -1,14 +1,15 @@
 /**
  * Librería Luz Divina - JavaScript Principal
- * Funcionalidades: búsqueda, validación, animaciones
+ * Funcionalidades: búsqueda, validación de formularios
  */
 
 document.addEventListener('DOMContentLoaded', function () {
+
     // =============================================
-    // 1. Navbar scroll effect
+    // 1. Efecto de navbar al hacer scroll
     // =============================================
     const navbar = document.querySelector('.navbar');
-    
+
     window.addEventListener('scroll', function () {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
@@ -31,14 +32,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 const searchData = card.getAttribute('data-search') || '';
                 if (searchData.includes(query)) {
                     card.style.display = '';
-                    card.style.animation = 'fadeInUp 0.4s ease-out';
                     visibleCount++;
                 } else {
                     card.style.display = 'none';
                 }
             });
 
-            // Actualizar contador
+            // Actualizar contador de resultados
             const bookCount = document.getElementById('bookCount');
             if (bookCount) {
                 bookCount.textContent = visibleCount + ' libros encontrados';
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
 
-            // Actualizar contador
+            // Actualizar contador de resultados
             const authorCount = document.getElementById('authorCount');
             if (authorCount) {
                 authorCount.textContent = visibleCount + ' autores registrados';
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     field.classList.add('is-invalid');
                     field.classList.remove('is-valid');
                 } else {
-                    // Validaciones extras
+                    // Validaciones adicionales
                     if (field.type === 'email') {
                         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                         if (!emailRegex.test(field.value)) {
@@ -113,14 +113,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (!isValid) {
                 e.preventDefault();
-                // Scroll al primer campo inválido
+                // Desplazar al primer campo inválido
                 const firstInvalid = contactForm.querySelector('.is-invalid');
                 if (firstInvalid) {
                     firstInvalid.focus();
                     firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             } else {
-                // Mostrar spinner en el botón
+                // Mostrar indicador de carga en el botón
                 const btnSpinner = document.getElementById('btnSpinner');
                 const btnEnviar = document.getElementById('btnEnviar');
                 if (btnSpinner && btnEnviar) {
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Validación en tiempo real
+        // Validación en tiempo real al escribir
         contactForm.querySelectorAll('[required]').forEach(function (field) {
             field.addEventListener('input', function () {
                 if (this.value.trim()) {
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // =============================================
-    // 5. Contador de caracteres en textarea
+    // 5. Contador de caracteres en área de texto
     // =============================================
     const comentario = document.getElementById('comentario');
     const charCount = document.getElementById('charCount');
@@ -169,29 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // =============================================
-    // 6. Scroll Reveal animations
-    // =============================================
-    const revealElements = document.querySelectorAll('.book-card-wrapper, .info-card, .author-row');
-    
-    const revealObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    revealElements.forEach(function (el, index) {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.5s ease ' + (index % 6) * 0.08 + 's, transform 0.5s ease ' + (index % 6) * 0.08 + 's';
-        revealObserver.observe(el);
-    });
-
-    // =============================================
-    // 7. Smooth scroll para anclas
+    // 6. Desplazamiento suave para enlaces ancla
     // =============================================
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
         anchor.addEventListener('click', function (e) {
