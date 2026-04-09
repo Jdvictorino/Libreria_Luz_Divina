@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Servidor: localhost
--- Tiempo de generación: 20-05-2008 a las 05:30:59
--- Versión del servidor: 5.0.18
--- Versión de PHP: 5.1.2
+-- Tiempo de generaciï¿½n: 20-05-2008 a las 05:30:59
+-- Versiï¿½n del servidor: 5.0.18
+-- Versiï¿½n de PHP: 5.1.2
 -- 
 -- Base de datos: `dblibreria`
 -- 

@@ -32,21 +32,6 @@ $tipos = [
 ];
 ?>
 
-<!-- Hero Section -->
-<section class="hero-section">
-    <div class="hero-overlay"></div>
-    <div class="container hero-content">
-        <h1 class="hero-title animate-fade-in">
-            <i class="bi bi-book-half"></i>
-            Librería <span class="text-accent">Luz Divina</span>
-        </h1>
-        <p class="hero-subtitle animate-fade-in-delay">Descubre nuestra colección de libros seleccionados especialmente para ti</p>
-        <a href="#libros" class="btn btn-hero animate-fade-in-delay-2">
-            <i class="bi bi-arrow-down-circle me-2"></i> Explorar Libros
-        </a>
-    </div>
-</section>
-
 <!-- Listado de Libros -->
 <section id="libros" class="section-content">
     <div class="container">
