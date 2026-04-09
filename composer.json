@@ -1,15 +1,10 @@
 {
-    "name": "jdvictorino/libreria-luz-divina",
-    "description": "Portal Web Librería Luz Divina",
-    "type": "project",
-    "authors": [
-        {
-            "name": "JD Victorino",
-            "email": "info@librerialuzdivina.com"
+    "name": "jdvictorino/l "email": "info@librerialuzdivina.com"
         }
     ],
     "require": {
         "php": ">=7.4",
         "ext-pdo": "*"
-    }
-}
+    },
+    "license": "proprietary"
+}       
