@@ -4,11 +4,21 @@
  * Librería Luz Divina
  */
 
-$host = getenv('DB_HOST') ?: 'localhost';
-$port = getenv('DB_PORT') ?: '3306';
-$dbname = getenv('DB_NAME') ?: 'libreria';
-$username = getenv('DB_USER') ?: 'root';
-$password = getenv('DB_PASS') !== false ? getenv('DB_PASS') : '';
+$databaseUrl = getenv('DATABASE_URL');
+if ($databaseUrl) {
+    $db = parse_url($databaseUrl);
+    $host = $db['host'];
+    $port = $db['port'];
+    $username = $db['user'];
+    $password = $db['pass'];
+    $dbname = ltrim($db['path'], '/');
+} else {
+    $host = getenv('DB_HOST') ?: 'localhost';
+    $port = getenv('DB_PORT') ?: '3306';
+    $dbname = getenv('DB_NAME') ?: 'libreria';
+    $username = getenv('DB_USER') ?: 'root';
+    $password = getenv('DB_PASS') !== false ? getenv('DB_PASS') : '';
+}
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=$charset";
@@ -17,6 +27,7 @@ $options = [
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     PDO::ATTR_EMULATE_PREPARES   => false,
+    PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
 ];
 
 try {
